@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>麻吉城市樂園 活動網頁設計 | Helen Hsieh</title>
+<meta name="description" content="為 GOMAJI 夠麻吉全新品牌識別推出的城市嘉年華宣傳網頁，結合公司 Rebranding 視覺與全新品牌角色 Maji Friend，在 3 週內完成品牌識別介紹與購票導購兩項任務。">
+<meta property="og:title" content="麻吉城市樂園 活動網頁設計 | Helen Hsieh">
+<meta property="og:description" content="為 GOMAJI 夠麻吉全新品牌識別推出的城市嘉年華宣傳網頁，結合 Rebranding 視覺與全新品牌角色 Maji Friend。">
+<meta property="og:image" content="../img/gomaji.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,11 +19,44 @@
 .process-item{position:relative;overflow:hidden;background:var(--bg-mid);border:1px solid var(--border-dim);}
 .process-item img{width:100%;display:block;filter:grayscale(.1);transition:transform 1.4s ease,filter 1.4s ease;}
 .process-item:hover img{transform:scale(1.03);filter:grayscale(0);}
+.process-video{position:relative;width:100%;aspect-ratio:16/9;}
+.process-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
 .process-caption{padding:14px 18px;font-size:11px;letter-spacing:.08em;line-height:1.6;color:rgba(240,237,230,.55);border-top:1px solid var(--border-dim);}
 .process-caption b{color:var(--text);font-weight:500;}
 @media(max-width:760px){
   .process-grid{grid-template-columns:1fr;padding:0 var(--page-x) 64px;}
 }
+
+/* ── LIGHTBOX ── */
+.process-trigger{display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;}
+.process-video-catch{position:absolute;inset:0;width:100%;height:100%;}
+.process-trigger:focus-visible{outline:1px solid var(--accent,var(--gold));outline-offset:-4px;}
+
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(6,8,10,.94);display:flex;align-items:center;justify-content:center;padding:96px var(--page-x) 88px;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.lightbox.open{opacity:1;pointer-events:auto;}
+.lightbox[hidden]{display:none;}
+.lightbox-stage{max-width:1700px;width:100%;max-height:100%;aspect-ratio:16/9;}
+.lightbox-stage img,.lightbox-stage iframe{width:100%;height:100%;object-fit:contain;border:0;display:block;background:#000;}
+.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;display:flex;align-items:center;justify-content:center;border:1px solid rgba(240,237,230,.25);background:rgba(13,17,20,.45);color:var(--text);cursor:pointer;transition:border-color .3s,color .3s,background .3s;}
+.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{border-color:var(--accent,var(--gold));color:var(--accent,var(--gold));}
+.lightbox-close{top:28px;right:var(--page-x);width:44px;height:44px;font-size:15px;}
+.lightbox-prev,.lightbox-next{top:50%;transform:translateY(-50%);width:52px;height:52px;font-size:18px;}
+.lightbox-prev{left:var(--page-x);}
+.lightbox-next{right:var(--page-x);}
+.lightbox-caption{position:absolute;left:0;right:0;bottom:32px;text-align:center;font-size:12px;letter-spacing:.06em;line-height:1.6;color:rgba(240,237,230,.6);padding:0 120px;}
+@media(max-width:760px){
+  .lightbox{padding:88px 24px 100px;}
+  .lightbox-prev{left:8px;}
+  .lightbox-next{right:8px;}
+  .lightbox-caption{padding:0 60px;}
+}
+
+.onsite-photos-hero{margin-bottom:16px;}
+.onsite-photos-hero .onsite-photo{aspect-ratio:2/1;}
+.onsite-photos-hero .onsite-photo img{object-position:top;}
+.onsite-photos-grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.onsite-photos-grid4 .onsite-photo{aspect-ratio:3/2;}
+@media(max-width:600px){.onsite-photos-grid4{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -25,13 +64,19 @@
 <div class="cursor" id="cursor"></div>
 
 <nav id="mainNav">
-  <a href="../helen_website.html" class="nav-logo">HH <span class="star">✦</span></a>
+  <a href="../helen_website.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
   <ul class="nav-links">
     <li><a href="../helen_website.html#works">ARCHIVE</a></li>
     <li><a href="../helen_website.html#about">DOSSIER</a></li>
     <li><a href="mailto:helenn1219@gmail.com">SIGNAL</a></li>
   </ul>
-  <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener" class="nav-cv">Download CV</a>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">中文版 CV</a>
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+    </div>
+  </details>
 </nav>
 
 <section class="detail-hero">
@@ -42,6 +87,7 @@
     <span class="detail-tag"><i class="detail-tag-dot"></i>EVENT DESIGN · BRAND EXTENSION · 2023</span>
     <h1 class="detail-title">麻吉城市樂園<br>活動網頁設計</h1>
     <p class="detail-title-en">Gomaji City Park Campaign</p>
+    <a href="https://event.gomaji.com/activities/202306/carnivalcity2023/" target="_blank" rel="noopener" class="detail-live-btn">VISIT LIVE SITE ↗</a>
   </div>
 </section>
 
@@ -61,15 +107,14 @@
     </div>
     <div class="detail-meta-item">
       <div class="detail-meta-label">Tools</div>
-      <div class="detail-meta-value">Photoshop · Illustrator · Sublime · Excel</div>
+      <div class="detail-meta-value">Photoshop · Illustrator · Sublime </div>
     </div>
   </div>
 
   <div class="detail-main">
-    <p class="detail-lede">為 GOMAJI 夠麻吉全新品牌識別打造的城市嘉年華宣傳網頁，結合公司 Rebranding 視覺與全新品牌角色 Maji Friend，將購票導購與沉浸式活動氛圍濃縮進一頁式網站，讓使用者在瀏覽網站時就能提前感受到參與活動的快樂氣氛。</p>
+    <p class="detail-lede">為 GOMAJI 夠麻吉全新品牌識別推出的城市嘉年華宣傳網頁，結合公司 Rebranding 視覺與全新品牌角色 Maji Friend，在 3 週內同時完成品牌識別介紹與購票導購兩項任務。</p>
 
     <div class="detail-stats">
-      <div><div class="detail-stat-num">600萬+</div><div class="detail-stat-label">會員觸及</div></div>
       <div><div class="detail-stat-num">5,000+</div><div class="detail-stat-label">現場參與人數</div></div>
       <div><div class="detail-stat-num">42</div><div class="detail-stat-label">合作攤位</div></div>
       <div><div class="detail-stat-num">80%</div><div class="detail-stat-label">優惠券核銷率</div></div>
@@ -77,15 +122,15 @@
 
     <div class="detail-section">
       <h4>Challenge</h4>
-      <p>這是 GOMAJI 首次以全新品牌識別——鮮明色彩系統結合全新吉祥角色「Maji Friend」——推出的大型實體嘉年華。網站不只要負責活動資訊與購票導購，更肩負著把公司剛完成的 Rebranding 視覺介紹給累積十餘年的舊會員與電商 APP 既有使用者的任務。如何在企劃與設計合計僅 3 週的時程內，讓一頁式網站同時說清楚「品牌煥然一新」與「這個活動好玩」，是最主要的挑戰。</p>
+      <p>這是 GOMAJI 首次以全新品牌識別推出的大型實體嘉年華，網站得同時做兩件事：把公司剛完成的 Rebranding 視覺介紹給累積十餘年的舊會員，並把購票導購做起來。企劃與設計合計只有 3 週，如何讓一頁式網站在短時間內同時說清楚「品牌煥然一新」與「這個活動好玩」，是最主要的挑戰。</p>
     </div>
     <div class="detail-section">
       <h4>Approach</h4>
-      <p>以家庭、追星粉絲與電商 APP 既有使用者為目標客群，我延續品牌新色彩系統（橘 #FF641E、綠 #00b969、黃 #FADC05、粉 #FA96DC、藍 #5069FA），讓活動主標以對話框造型搭配 Maji Friend 角色登場，強化「活潑、親子、有趣」的第一印象；版面採單頁式捲動設計，將活動亮點、美食主打星、活動資訊等段落用色塊分區導覽，並延伸出手機版切版與現場旗幟、看板等實體物料，讓品牌識別從螢幕走進真實會場。</p>
+      <p>我以家庭、追星粉絲與電商 APP 既有使用者為目標客群，延續品牌新色彩系統與 Maji Friend 角色，用單頁式捲動設計把活動亮點、美食主打星、活動資訊等內容分區導覽，並規劃手機版切版，確保購票入口在每個裝置上都清楚可見。</p>
     </div>
     <div class="detail-section">
       <h4>Outcome</h4>
-      <p>活動網站成功承接了會員導購與品牌識別傳遞的雙重任務：現場吸引超過 5,000 人參與、42 家攤商進駐，優惠券核銷率達 80%；GOMAJI 會員觸及超過 600 萬人次。品牌新視覺也透過網站、周邊物料與現場布置完整落地，成為當年度公司品牌轉型聲量最大的活動之一。</p>
+      <p>網站達成了設定的雙重目標：購票導購方面，現場吸引超過 5,000 人參與、42 家攤商進駐，優惠券核銷率達 80%；品牌識別傳遞方面，GOMAJI 會員觸及超過 600 萬人次，成為當年度公司品牌轉型聲量最大的活動之一。</p>
     </div>
   </div>
 </div>
@@ -104,22 +149,65 @@
 
 <div class="process-grid">
   <div class="process-item">
-    <img src="../img/gomaji-process/process-1-overview.jpg" alt="麻吉城市樂園 網頁設計總覽" loading="lazy">
-    <div class="process-caption"><b>總覽</b> · 網站目的在於宣傳品牌與鼓勵購買電子票券，並讓使用者沉浸式感受活動氛圍</div>
-  </div>
-  <div class="process-item">
-    <img src="../img/gomaji-process/process-2-background.jpg" alt="麻吉城市樂園 活動背景與目的" loading="lazy">
+    <button class="process-trigger" aria-label="放大檢視：活動背景">
+      <img src="../img/gomaji-process/process-2-background.jpg" alt="麻吉城市樂園 活動背景與目的" loading="lazy">
+    </button>
     <div class="process-caption"><b>活動背景</b> · 推廣品牌新視覺與精神，帶入「城市」與「樂園」主題，結合全新品牌角色 Maji Friend</div>
   </div>
   <div class="process-item">
-    <img src="../img/gomaji-process/process-3-designspec.jpg" alt="麻吉城市樂園 網頁設計規範" loading="lazy">
+    <button class="process-trigger" aria-label="放大檢視：設計規範">
+      <img src="../img/gomaji-process/process-3-designspec.jpg" alt="麻吉城市樂園 網頁設計規範" loading="lazy">
+    </button>
     <div class="process-caption"><b>設計規範</b> · 目標客群、五色系統與網頁／手機版切版規劃，Slogan 以對話框搭配品牌輔助圖案</div>
   </div>
   <div class="process-item">
-    <img src="../img/gomaji-process/process-4-extension.jpg" alt="麻吉城市樂園 活動延伸設計與現場物料" loading="lazy">
+    <button class="process-trigger" aria-label="放大檢視：實體延伸">
+      <img src="../img/gomaji-process/process-4-extension.jpg" alt="麻吉城市樂園 活動延伸設計與現場物料" loading="lazy">
+    </button>
     <div class="process-caption"><b>實體延伸</b> · 主視覺延伸至邀請卡、Banner，並落地為現場背板、旗幟等實體物料</div>
   </div>
+  <div class="process-item">
+    <div class="process-video">
+      <iframe src="https://www.youtube.com/embed/7Y2rm-JwWdo?si=c58YTBgMSFFmYaof" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <button class="process-trigger process-video-catch" aria-label="放大檢視：活動花絮"></button>
+    </div>
+    <div class="process-caption"><b>活動花絮</b> · 共858人購買5000+張優惠券、核銷率近8成，42間攤商參與核銷，App新戶數創年度新高，宣傳影片累積破萬觀看</div>
+  </div>
 </div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="設計軌跡放大預覽" hidden>
+  <button class="lightbox-close" id="lightboxClose" aria-label="關閉">✕</button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="上一張">←</button>
+  <div class="lightbox-stage" id="lightboxStage"></div>
+  <button class="lightbox-next" id="lightboxNext" aria-label="下一張">→</button>
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
+<section class="onsite">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>ON-SITE · SUNSHINE SPORTS PARK · 2023.06</span>
+    <h3 class="onsite-title">現場實況<br><em>Live at the Park.</em></h3>
+    <p class="onsite-desc">2023 年 6 月，麻吉城市樂園在新店陽光運動公園正式登場，以下是活動現場實拍畫面。</p>
+  </div>
+
+  <div class="onsite-photos-hero">
+    <div class="onsite-photo">
+      <img src="../img/gomaji-onsite/onesite-2.jpg" alt="麻吉城市樂園活動現場舞台與滿場參與人潮" loading="lazy">
+      <span class="onsite-caption">活動現場 · 逾5,000人到場參與</span>
+    </div>
+  </div>
+
+  <div class="onsite-photos-grid4">
+    <div class="onsite-photo">
+      <img src="../img/gomaji-onsite/onesite-1.jpg" alt="麻吉城市樂園活動網頁實際使用畫面" loading="lazy">
+      <span class="onsite-caption">活動網頁現場使用示意</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/gomaji-onsite/onesite-3.jpg" alt="麻吉城市樂園駐唱嘉賓演出" loading="lazy">
+      <span class="onsite-caption">麻吉嘉賓演出</span>
+    </div>
+  </div>
+</section>
 
 <a href="puli.html" class="detail-nextlink">
   <div>
@@ -138,7 +226,7 @@
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
     <div class="footer-info">
       <p class="name">謝孟庭 Helen Hsieh</p>
-      <p>UI/UX Designer &amp; Front-end Developer</p>
+      <p>UI/UX Designer</p>
       <p>台北，台灣 · 開放海外工作機會</p>
     </div>
   </div>
@@ -168,6 +256,74 @@ document.querySelectorAll('a,button').forEach(el => {
 });
 
 // Nav 在案例分頁維持常駐顯示，確保使用者隨時能返回首頁
+
+// ══ 設計軌跡 Lightbox ══
+const lightboxData = [
+  {type:'image', src:'../img/gomaji-process/process-2-background.jpg', alt:'麻吉城市樂園 活動背景與目的', caption:'活動背景 · 推廣品牌新視覺與精神，帶入「城市」與「樂園」主題，結合全新品牌角色 Maji Friend'},
+  {type:'image', src:'../img/gomaji-process/process-3-designspec.jpg', alt:'麻吉城市樂園 網頁設計規範', caption:'設計規範 · 目標客群、五色系統與網頁／手機版切版規劃，Slogan 以對話框搭配品牌輔助圖案'},
+  {type:'image', src:'../img/gomaji-process/process-4-extension.jpg', alt:'麻吉城市樂園 活動延伸設計與現場物料', caption:'實體延伸 · 主視覺延伸至邀請卡、Banner，並落地為現場背板、旗幟等實體物料'},
+  {type:'video', src:'https://www.youtube.com/embed/7Y2rm-JwWdo?si=c58YTBgMSFFmYaof', title:'活動花絮影片', caption:'活動花絮 · 共858人購買5000+張優惠券、核銷率近8成，42間攤商參與核銷，App新戶數創年度新高，宣傳影片累積破萬觀看'}
+];
+
+const lightbox        = document.getElementById('lightbox');
+const lightboxStage    = document.getElementById('lightboxStage');
+const lightboxCaption  = document.getElementById('lightboxCaption');
+const lightboxCloseBtn = document.getElementById('lightboxClose');
+const lightboxPrevBtn  = document.getElementById('lightboxPrev');
+const lightboxNextBtn  = document.getElementById('lightboxNext');
+let lightboxIndex = 0;
+let lightboxLastFocused = null;
+
+function renderLightbox() {
+  const item = lightboxData[lightboxIndex];
+  lightboxStage.innerHTML = item.type === 'image'
+    ? `<img src="${item.src}" alt="${item.alt}">`
+    : `<iframe src="${item.src}" title="${item.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  lightboxCaption.textContent = item.caption;
+}
+
+function openLightbox(index) {
+  lightboxLastFocused = document.activeElement;
+  lightboxIndex = index;
+  renderLightbox();
+  lightbox.hidden = false;
+  requestAnimationFrame(() => lightbox.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  lightboxCloseBtn.focus();
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { lightbox.hidden = true; lightboxStage.innerHTML = ''; }, 300);
+  if (lightboxLastFocused) lightboxLastFocused.focus();
+}
+
+function showRelative(delta) {
+  lightboxIndex = (lightboxIndex + delta + lightboxData.length) % lightboxData.length;
+  renderLightbox();
+}
+
+document.querySelectorAll('.process-trigger').forEach((btn, i) => {
+  btn.addEventListener('click', () => openLightbox(i));
+});
+lightboxCloseBtn.addEventListener('click', closeLightbox);
+lightboxPrevBtn.addEventListener('click', () => showRelative(-1));
+lightboxNextBtn.addEventListener('click', () => showRelative(1));
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+window.addEventListener('keydown', e => {
+  if (lightbox.hidden) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showRelative(-1);
+  if (e.key === 'ArrowRight') showRelative(1);
+});
+lightbox.addEventListener('keydown', e => {
+  if (e.key !== 'Tab') return;
+  const focusable = [lightboxPrevBtn, lightboxNextBtn, lightboxCloseBtn];
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
 </script>
 </body>
 </html>

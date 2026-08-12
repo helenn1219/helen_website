@@ -3,24 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>埔里酒廠 AI 導覽建置系統 | Helen Hsieh</title>
+<title>埔里酒廠 AI導覽建置系統 | Helen Hsieh</title>
+<meta name="description" content="為百年歷史的埔里酒廠打造沉浸式 AI 導覽體驗，整合互動手繪地圖、AR 導覽與 360° 環景，讓走進酒廠的旅人能以最自在的方式認識這片釀造的土地。">
+<meta property="og:title" content="埔里酒廠 AI導覽建置系統 | Helen Hsieh">
+<meta property="og:description" content="為百年歷史的埔里酒廠打造沉浸式 AI 導覽體驗，整合互動手繪地圖、AR 導覽與 360° 環景。">
+<meta property="og:image" content="../img/puli.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
-<style>:root{--accent:#B97D86; --accent-solid:#8B2635; --accent-wash:rgba(139,38,53,.09); --accent-glow:rgba(139,38,53,.38);}</style>
+<style>
+:root{--accent:#B97D86; --accent-solid:#8B2635; --accent-wash:rgba(139,38,53,.09); --accent-glow:rgba(139,38,53,.38);}
+.onsite-photos-wide{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.onsite-photos-wide .onsite-photo{aspect-ratio:3/2;}
+.onsite-photos-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.onsite-photos-grid3 .onsite-photo{aspect-ratio:3/4;}
+@media(max-width:760px){
+  .onsite-photos-wide{grid-template-columns:1fr;}
+  .onsite-photos-grid3{grid-template-columns:1fr 1fr;}
+}
+
+.process-diagram-wrap{padding:0 var(--page-x) 100px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.process-diagram-frame{background:#EAE3D3;padding:20px;border-radius:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}
+.process-diagram-label{display:block;margin-bottom:14px;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(139,38,53,.6);}
+.process-diagram-trigger{position:relative;display:block;width:100%;}
+.process-diagram-trigger img{width:100%;display:block;}
+.process-lens{position:absolute;width:220px;height:220px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .2s ease;box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 6px rgba(201,168,76,.1);background-repeat:no-repeat;z-index:5;}
+.process-diagram-trigger:hover .process-lens{opacity:1;}
+.process-diagram-hint{margin-top:12px;font-size:10px;letter-spacing:.1em;color:rgba(240,237,230,.4);}
+@media(max-width:900px){
+  .process-diagram-wrap{grid-template-columns:1fr;}
+  .process-lens{display:none;}
+}
+</style>
 </head>
 <body>
 
 <div class="cursor" id="cursor"></div>
 
 <nav id="mainNav">
-  <a href="../helen_website.html" class="nav-logo">HH <span class="star">✦</span></a>
+  <a href="../helen_website.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
   <ul class="nav-links">
     <li><a href="../helen_website.html#works">ARCHIVE</a></li>
     <li><a href="../helen_website.html#about">DOSSIER</a></li>
     <li><a href="mailto:helenn1219@gmail.com">SIGNAL</a></li>
   </ul>
-  <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener" class="nav-cv">Download CV</a>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">中文版 CV</a>
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+    </div>
+  </details>
 </nav>
 
 <section class="detail-hero">
@@ -29,9 +64,9 @@
   <div class="detail-hero-content">
     <a href="../helen_website.html#works" class="detail-back">← BACK TO ARCHIVE</a>
     <span class="detail-tag"><i class="detail-tag-dot"></i>CULTURAL TECH · AI · 2024—2025</span>
-    <h1 class="detail-title">埔里酒廠<br>AI 導覽建置系統</h1>
+    <h1 class="detail-title">埔里酒廠<br>AI導覽建置系統</h1>
     <p class="detail-title-en">Puli Brewery AI Tour System</p>
-    <a href="https://puli-brewery-test.omniguider.com/home/" target="_blank" rel="noopener" class="detail-live-btn">VISIT LIVE SITE ↗</a>
+    <a href="https://puli-brewery.omniguider.com/home/" target="_blank" rel="noopener" class="detail-live-btn">VISIT LIVE SITE ↗</a>
   </div>
 </section>
 
@@ -47,7 +82,7 @@
     </div>
     <div class="detail-meta-item">
       <div class="detail-meta-label">Timeline</div>
-      <div class="detail-meta-value">2024.09 – 2025.04 · 90 個工作天</div>
+      <div class="detail-meta-value">2024.12 – 2025.04 · 90 個工作天</div>
     </div>
     <div class="detail-meta-item">
       <div class="detail-meta-label">Tools</div>
@@ -62,7 +97,6 @@
       <div><div class="detail-stat-num">13</div><div class="detail-stat-label">導覽景點</div></div>
       <div><div class="detail-stat-num">4</div><div class="detail-stat-label">支援語言</div></div>
       <div><div class="detail-stat-num">3</div><div class="detail-stat-label">裝置入口</div></div>
-      <div><div class="detail-stat-num">90</div><div class="detail-stat-label">工作天完成</div></div>
     </div>
 
     <div class="detail-section">
@@ -80,9 +114,97 @@
   </div>
 </div>
 
-<div class="detail-gallery">
-  <img src="../img/puli.jpg" alt="埔里酒廠 AI 導覽建置系統 補充畫面" loading="lazy">
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>SELECTED SCREENS · AI TOUR SYSTEM</span>
+    <h3 class="onsite-title">精選畫面<br><em>Inside the Experience.</em></h3>
+    <p class="onsite-desc">從手繪園區地圖到樓層導覽、AI 導覽員與 360° 環景探索，這是遊客走進埔里酒廠實際使用的畫面。</p>
+  </div>
+</section>
+
+<div class="mockup-marquee">
+  <div class="mockup-track">
+    <div class="mockup-shot"><img src="../img/puli-mockup/mockup-1.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-2.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-3.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-4.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-5.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-6.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-7.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-1.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-2.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-3.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-4.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-5.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-6.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div><div class="mockup-shot"><img src="../img/puli-mockup/mockup-7.png" alt="埔里酒廠 AI 導覽 裝置畫面"></div>
+  </div>
 </div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>DESIGN PROCESS · FROM PROPOSAL TO SYSTEM</span>
+    <h3 class="onsite-title">設計歷程<br><em>From Proposal to System.</em></h3>
+    <p class="onsite-desc">從標案提案、線框稿到 UI 版本迭代與多語系元件庫，這是埔里酒廠導覽系統從概念到落地的完整設計歷程。</p>
+  </div>
+</section>
+
+<div class="process-diagram-wrap">
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">WIREFRAME_REF // PULI BREWERY</span>
+    <div class="process-diagram-trigger" id="processTrigger1">
+      <img src="../img/puli-onsite/wireframe.png" alt="埔里酒廠導覽系統 Wireframe 線框稿" id="processImg1" loading="lazy">
+      <div class="process-lens" id="processLens1"></div>
+    </div>
+    <p class="process-diagram-hint">介面架構線框稿</p>
+  </div>
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">PROPOSAL_REF // PULI BREWERY</span>
+    <div class="process-diagram-trigger" id="processTrigger0">
+      <img src="../img/puli-onsite/bid.png" alt="埔里酒廠標案提案設計參考" id="processImg0" loading="lazy">
+      <div class="process-lens" id="processLens0"></div>
+    </div>
+    <p class="process-diagram-hint">標案提案階段 · 介面設計提案</p>
+  </div>
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">ITERATION_REF // PULI BREWERY</span>
+    <div class="process-diagram-trigger" id="processTrigger2">
+      <img src="../img/puli-onsite/ui.png" alt="埔里酒廠 UI v1 交付前端與 v2 修正版本迭代" id="processImg2" loading="lazy">
+      <div class="process-lens" id="processLens2"></div>
+    </div>
+    <p class="process-diagram-hint">UI v1 → v2 · 與工程端溝通迭代的設計力</p>
+  </div>
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">COMPONENTS_REF // PULI BREWERY</span>
+    <div class="process-diagram-trigger" id="processTrigger3">
+      <img src="../img/puli-onsite/components.png" alt="埔里酒廠導覽系統 UI 元件庫規範" id="processImg3" loading="lazy">
+      <div class="process-lens" id="processLens3"></div>
+    </div>
+    <p class="process-diagram-hint">多語系元件庫規範</p>
+  </div>
+</div>
+
+<section class="onsite">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>ON-SITE · PULI BREWERY · 2024–2025</span>
+    <h3 class="onsite-title">現場實況<br><em>On the Grounds.</em></h3>
+    <p class="onsite-desc">以下是埔里酒廠園區的實地拍攝畫面，包含散客 QR Code 隨掃隨看入口的實景。</p>
+  </div>
+
+  <div class="onsite-photos-wide">
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-1.JPG" alt="埔里酒廠園區入口與導覽 App 地圖實際使用畫面" loading="lazy">
+      <span class="onsite-caption">園區入口 · 導覽 App 地圖使用畫面</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-2.JPG" alt="埔里酒廠 QR Code 導覽掃描牌，散客隨掃隨看入口" loading="lazy">
+      <span class="onsite-caption">QR Code 掃描牌 · 散客隨掃隨看</span>
+    </div>
+  </div>
+
+  <div class="onsite-photos-grid3">
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-3.JPG" alt="埔里酒廠台酒旗艦館入口與指標" loading="lazy">
+      <span class="onsite-caption">台酒旗艦館入口動線</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-4.JPG" alt="埔里酒廠 TTL 展示牆酒甕陳列" loading="lazy">
+      <span class="onsite-caption">TTL展示牆 · 百年酒甕陳列</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/puli-onsite/onsite-5.JPG" alt="埔里酒廠酒甕隧道園區動線" loading="lazy">
+      <span class="onsite-caption">酒甕隧道 · 園區動線一景</span>
+    </div>
+  </div>
+</section>
 
 <a href="foxconn.html" class="detail-nextlink">
   <div>
@@ -101,7 +223,7 @@
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
     <div class="footer-info">
       <p class="name">謝孟庭 Helen Hsieh</p>
-      <p>UI/UX Designer &amp; Front-end Developer</p>
+      <p>UI/UX Designer</p>
       <p>台北，台灣 · 開放海外工作機會</p>
     </div>
   </div>
@@ -131,6 +253,33 @@ document.querySelectorAll('a,button').forEach(el => {
 });
 
 // Nav 在案例分頁維持常駐顯示，確保使用者隨時能返回首頁
+
+// ══ 設計歷程：放大鏡 ══
+const processData = [
+  {src:'../img/puli-onsite/bid.png', alt:'埔里酒廠標案提案設計參考'},
+  {src:'../img/puli-onsite/wireframe.png', alt:'埔里酒廠導覽系統 Wireframe 線框稿'},
+  {src:'../img/puli-onsite/ui.png', alt:'埔里酒廠 UI v1 交付前端與 v2 修正版本迭代'},
+  {src:'../img/puli-onsite/components.png', alt:'埔里酒廠導覽系統 UI 元件庫規範'}
+];
+const PROCESS_LENS_SIZE = 220;
+const PROCESS_LENS_ZOOM = 3;
+processData.forEach((item, i) => {
+  const trigger = document.getElementById('processTrigger' + i);
+  const lens = document.getElementById('processLens' + i);
+  const img = document.getElementById('processImg' + i);
+  lens.style.backgroundImage = `url('${item.src}')`;
+  trigger.addEventListener('mousemove', e => {
+    const rect = img.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+    x = Math.max(0, Math.min(x, rect.width));
+    y = Math.max(0, Math.min(y, rect.height));
+    lens.style.left = (x - PROCESS_LENS_SIZE / 2) + 'px';
+    lens.style.top  = (y - PROCESS_LENS_SIZE / 2) + 'px';
+    lens.style.backgroundSize = (rect.width * PROCESS_LENS_ZOOM) + 'px ' + (rect.height * PROCESS_LENS_ZOOM) + 'px';
+    lens.style.backgroundPosition = `-${x * PROCESS_LENS_ZOOM - PROCESS_LENS_SIZE / 2}px -${y * PROCESS_LENS_ZOOM - PROCESS_LENS_SIZE / 2}px`;
+  });
+});
 </script>
 </body>
 </html>

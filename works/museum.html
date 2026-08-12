@@ -3,24 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>國立歷史博物館 AR 探索體驗 | Helen Hsieh</title>
+<title>國立歷史博物館 AR探索體驗 | Helen Hsieh</title>
+<meta name="description" content="為重新開館的史博館設計戶外AR遊歷體驗，將庭院空間轉化為遊戲化探索場域，用虛擬吉祥物「酷獸」領著遊客一步步解鎖屬於自己的博物館旅程。">
+<meta property="og:title" content="國立歷史博物館 AR探索體驗 | Helen Hsieh">
+<meta property="og:description" content="為重新開館的史博館設計戶外AR遊歷體驗，將庭院空間轉化為遊戲化探索場域。">
+<meta property="og:image" content="../img/museum.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
-<style>:root{--accent:#808B81; --accent-solid:#2C3E2D; --accent-wash:rgba(44,62,45,.09); --accent-glow:rgba(44,62,45,.38);}</style>
+<style>
+:root{--accent:#808B81; --accent-solid:#2C3E2D; --accent-wash:rgba(44,62,45,.09); --accent-glow:rgba(44,62,45,.38);}
+
+.flow-diagram-wrap{padding:0 var(--page-x) 100px;}
+.flow-diagram-frame{background:#EAE3D3;padding:20px;border-radius:10px;box-shadow:0 40px 70px -24px rgba(0,0,0,.55);}
+.flow-diagram-label{display:block;margin-bottom:10px;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(44,62,45,.55);}
+.flow-diagram-trigger{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;}
+.flow-diagram-trigger img{width:100%;display:block;}
+.flow-diagram-trigger:focus-visible{outline:1px solid var(--accent-solid,var(--gold));outline-offset:4px;}
+.flow-lens{position:absolute;width:240px;height:240px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .2s ease;box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 6px rgba(201,168,76,.1);background-repeat:no-repeat;z-index:5;}
+.flow-diagram-trigger:hover .flow-lens{opacity:1;}
+.flow-diagram-hint{margin-top:-10px;font-size:10px;letter-spacing:.1em;color:rgba(240,237,230,.4);}
+@media(max-width:900px){.flow-lens{display:none;}}
+@media(max-width:760px){.flow-diagram-frame{padding:16px;}}
+
+.onsite-photos-row3{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;}
+.onsite-photos-row3 .onsite-photo{aspect-ratio:3/4;}
+@media(max-width:760px){
+  .onsite-photos-row3{grid-template-columns:1fr 1fr;}
+}
+
+.onsite-videos{grid-template-columns:repeat(3,1fr);}
+@media(max-width:760px){.onsite-videos{grid-template-columns:1fr;}}
+
+.level-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:0 var(--page-x) 100px;}
+.level-card{display:flex;flex-direction:column;gap:8px;}
+.level-img{border-radius:12px;overflow:hidden;background:var(--bg-mid);margin-bottom:8px;}
+.level-img img{display:block;width:100%;height:auto;}
+.level-tag{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent,var(--gold));}
+.level-title{font-family:var(--serif);font-size:clamp(20px,2vw,26px);font-weight:400;line-height:1.3;}
+.level-title-en{font-size:13px;color:rgba(240,237,230,.4);font-style:italic;}
+.level-desc{font-size:14px;line-height:1.7;color:rgba(240,237,230,.6);}
+@media(max-width:900px){.level-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.level-grid{grid-template-columns:1fr;}}
+
+.flow-lightbox{position:fixed;inset:0;z-index:200;background:rgba(6,8,10,.94);display:flex;align-items:center;justify-content:center;padding:80px var(--page-x);opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.flow-lightbox.open{opacity:1;pointer-events:auto;}
+.flow-lightbox[hidden]{display:none;}
+.flow-lightbox-stage{width:100%;height:100%;overflow:auto;background:#fff;}
+.flow-lightbox-stage img{display:block;width:2400px;max-width:none;height:auto;}
+.flow-lightbox-close{position:absolute;top:28px;right:var(--page-x);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(240,237,230,.25);background:rgba(13,17,20,.6);color:var(--text);cursor:pointer;transition:border-color .3s,color .3s;}
+.flow-lightbox-close:hover{border-color:var(--accent,var(--gold));color:var(--accent,var(--gold));}
+.flow-lightbox-hint{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-size:11px;letter-spacing:.08em;color:rgba(240,237,230,.55);pointer-events:none;}
+@media(max-width:760px){
+  .flow-lightbox{padding:64px 16px;}
+  .flow-lightbox-stage img{width:1400px;}
+}
+</style>
 </head>
 <body>
 
 <div class="cursor" id="cursor"></div>
 
 <nav id="mainNav">
-  <a href="../helen_website.html" class="nav-logo">HH <span class="star">✦</span></a>
+  <a href="../helen_website.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
   <ul class="nav-links">
     <li><a href="../helen_website.html#works">ARCHIVE</a></li>
     <li><a href="../helen_website.html#about">DOSSIER</a></li>
     <li><a href="mailto:helenn1219@gmail.com">SIGNAL</a></li>
   </ul>
-  <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener" class="nav-cv">Download CV</a>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">中文版 CV</a>
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+    </div>
+  </details>
 </nav>
 
 <section class="detail-hero">
@@ -29,7 +88,7 @@
   <div class="detail-hero-content">
     <a href="../helen_website.html#works" class="detail-back">← BACK TO ARCHIVE</a>
     <span class="detail-tag"><i class="detail-tag-dot"></i>AR EXPERIENCE · MUSEUM TECH · 2024</span>
-    <h1 class="detail-title">國立歷史博物館<br>AR 探索體驗</h1>
+    <h1 class="detail-title">國立歷史博物館<br>AR探索體驗</h1>
     <p class="detail-title-en">National Museum of History AR</p>
     
   </div>
@@ -47,7 +106,7 @@
     </div>
     <div class="detail-meta-item">
       <div class="detail-meta-label">Timeline</div>
-      <div class="detail-meta-value">2024.09 – 2025.04</div>
+      <div class="detail-meta-value">2024.10 – 2025.04</div>
     </div>
     <div class="detail-meta-item">
       <div class="detail-meta-label">Tools</div>
@@ -56,7 +115,7 @@
   </div>
 
   <div class="detail-main">
-    <p class="detail-lede">為重新開館的史博館設計戶外 AR 遊歷體驗，將庭院空間轉化為遊戲化探索場域，用虛擬吉祥物「酷獸」領著遊客一步步解鎖屬於自己的博物館旅程。</p>
+    <p class="detail-lede">為重新開館的史博館設計戶外AR遊歷體驗，將庭院空間轉化為遊戲化探索場域，用虛擬吉祥物「酷獸」領著遊客一步步解鎖屬於自己的博物館旅程。</p>
 
     <div class="detail-stats">
       <div><div class="detail-stat-num">4</div><div class="detail-stat-label">AR 互動關卡</div></div>
@@ -74,13 +133,44 @@
     </div>
     <div class="detail-section">
       <h4>Outcome</h4>
-      <p>戶外庭院從單純的動線空間，轉變為遊客願意駐足探索的遊戲化場域，也讓歷史博物館的文化內容以更輕鬆、更具互動感的方式被年輕世代看見。</p>
+      <p>庭院從單純的動線空間，成功轉為遊客願意主動停留、互動的體驗場域：4 款 AR 關卡與 6 個隱藏探索點提供了明確的探索誘因，同時維持文物與建築原有的莊重氛圍，達成當初設定的雙重目標，也讓歷史博物館的文化內容以更輕鬆、更具互動感的方式被年輕世代看見。</p>
     </div>
   </div>
 </div>
 
-<div class="detail-gallery">
-  <img src="../img/museum.jpg" alt="國立歷史博物館 AR 探索體驗 補充畫面" loading="lazy">
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>THE FOUR LEVELS · AR EXPERIENCE</span>
+    <h3 class="onsite-title">四款 AR 關卡<br><em>Four Ways to Explore.</em></h3>
+    <p class="onsite-desc">「戶外酷獸奇航」總覽涵蓋錦鯉、拍照、點燈三種戶外關卡，另有 1 款室內隱藏探索關卡，酷獸帶著遊客解鎖庭院裡的每個角落。</p>
+  </div>
+</section>
+
+<div class="level-grid">
+  <div class="level-card">
+    <div class="level-img"><img src="../img/museum-ui/game-1-crop.png" alt="網羅吉祥 AR 網撈錦鯉關卡畫面" loading="lazy"></div>
+    <span class="level-tag">01 · OUTDOOR AR</span>
+    <h4 class="level-title">網羅吉祥<br><em class="level-title-en">Catch the Koi</em></h4>
+    <p class="level-desc">AR 網撈庭院水池中悠遊的錦鯉與飛鳥，點擊即可獲得小卡集滿好運。</p>
+  </div>
+  <div class="level-card">
+    <div class="level-img"><img src="../img/museum-ui/game-2-crop.png" alt="吉祥物大合照 AR 拍照關卡畫面" loading="lazy"></div>
+    <span class="level-tag">02 · OUTDOOR AR</span>
+    <h4 class="level-title">吉祥物大合照<br><em class="level-title-en">Group Photo</em></h4>
+    <p class="level-desc">AR 拍照合成，與吉祥物角色同框互動，合影留念並拼貼照片。</p>
+  </div>
+  <div class="level-card">
+    <div class="level-img"><img src="../img/museum-ui/game-3-crop.png" alt="開館點燈祈福 AR 天燈關卡畫面" loading="lazy"></div>
+    <span class="level-tag">03 · OUTDOOR AR</span>
+    <h4 class="level-title">開館點燈祈福<br><em class="level-title-en">Release a Wish</em></h4>
+    <p class="level-desc">AR 天燈繪製與施放，繪製圖案或寫下祝福後看著天燈冉冉升空。</p>
+  </div>
+  <div class="level-card">
+    <div class="level-img"><img src="../img/museum-ui/game-4-crop.png" alt="隱藏探索 AR 放大鏡搜尋關卡畫面" loading="lazy"></div>
+    <span class="level-tag">04 · INDOOR AR</span>
+    <h4 class="level-title">隱藏探索<br><em class="level-title-en">Hidden Discovery</em></h4>
+    <p class="level-desc">AR 放大鏡搜尋，實際走進庭院各個角落仔細觀察，找出隱藏的文物資訊點。</p>
+  </div>
 </div>
 
 <section class="showcase">
@@ -97,57 +187,79 @@
   </div>
 </div>
 
-<section class="flow-section">
-  <p class="flow-title">體驗流程 · 開館點燈祈福 <span class="flow-title-en">Lantern Blessing Flow</span></p>
-  <div class="flow-strip">
-    <div class="flow-step">
-      <span class="flow-step-num">01</span>
-      <div class="phone-frame"><img src="../img/museum-ui/lantern-1-outdoor.jpg" alt="AR 啟動" loading="lazy"></div>
-      <p class="flow-step-title">AR 啟動</p>
-      <p class="flow-step-caption">走入戶外庭院，開啟天燈祈福關卡</p>
-    </div><div class="flow-step">
-      <span class="flow-step-num">02</span>
-      <div class="phone-frame"><img src="../img/museum-ui/lantern-2-tutorial.jpg" alt="操作教學" loading="lazy"></div>
-      <p class="flow-step-title">操作教學</p>
-      <p class="flow-step-caption">簡單手勢提示，降低操作門檻</p>
-    </div><div class="flow-step">
-      <span class="flow-step-num">03</span>
-      <div class="phone-frame"><img src="../img/museum-ui/lantern-3-write.jpg" alt="手寫祈福" loading="lazy"></div>
-      <p class="flow-step-title">手寫祈福</p>
-      <p class="flow-step-caption">在天燈上寫下自己的祝福文字</p>
-    </div><div class="flow-step">
-      <span class="flow-step-num">04</span>
-      <div class="phone-frame"><img src="../img/museum-ui/lantern-4-place.jpg" alt="選擇施放" loading="lazy"></div>
-      <p class="flow-step-title">選擇施放</p>
-      <p class="flow-step-caption">選定天燈擺放與施放的位置</p>
-    </div><div class="flow-step">
-      <span class="flow-step-num">05</span>
-      <div class="phone-frame"><img src="../img/museum-ui/lantern-5-release.jpg" alt="天燈升空" loading="lazy"></div>
-      <p class="flow-step-title">天燈升空</p>
-      <p class="flow-step-caption">AR 天燈緩緩升起，與夜空融為一體</p>
-    </div><div class="flow-step">
-      <span class="flow-step-num">06</span>
-      <div class="phone-frame"><img src="../img/museum-ui/lantern-6-done.jpg" alt="拍照留念" loading="lazy"></div>
-      <p class="flow-step-title">拍照留念</p>
-      <p class="flow-step-caption">完成祈福，生成專屬紀念畫面</p>
-    </div>
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>DESIGN PROCESS · USER FLOW</span>
+    <h3 class="onsite-title">使用者旅程<br><em>Mapping the Journey.</em></h3>
+    <p class="onsite-desc">酷獸 AR 導引關卡的完整使用者流程圖，涵蓋「帶我走／自由探索／隱藏探索」三種導覽模式的分岔判斷，以及各頁面之間的轉換邏輯。</p>
   </div>
 </section>
 
-<section class="highlight-grid">
-  <div class="highlight-card">
-      <div class="phone-frame"><img src="../img/museum-ui/highlight-mascot-photo.jpg" alt="酷獸大合照" loading="lazy"></div>
-      <p class="highlight-label">酷獸大合照</p>
-      <p class="flow-step-caption">與虛擬吉祥物合影拍貼，妝點專屬貼圖</p>
-    </div><div class="highlight-card">
-      <div class="phone-frame"><img src="../img/museum-ui/highlight-card-collect.jpg" alt="角色卡片蒐集" loading="lazy"></div>
-      <p class="highlight-label">角色卡片蒐集</p>
-      <p class="flow-step-caption">完成關卡解鎖收集卡，稀有度 ★—★★★★★</p>
-    </div><div class="highlight-card">
-      <div class="phone-frame"><img src="../img/museum-ui/highlight-ar-hidden.jpg" alt="AR 隱藏關卡" loading="lazy"></div>
-      <p class="highlight-label">AR 隱藏關卡</p>
-      <p class="flow-step-caption">庭院中的隱藏資訊點，探索彩蛋內容</p>
+<div class="flow-diagram-wrap">
+  <div class="flow-diagram-frame">
+    <span class="flow-diagram-label">WIREFLOW_REF // AR 酷獸導引</span>
+    <button class="flow-diagram-trigger" id="flowTrigger" aria-label="放大檢視使用者流程圖">
+      <img src="../img/museum-flow.png" alt="史博館 AR 探索體驗 酷獸導引使用者流程圖" id="flowThumb" loading="lazy">
+      <div class="flow-lens" id="flowLens"></div>
+    </button>
+    <p class="flow-diagram-hint">移動滑鼠可預覽細節 · 點擊放大完整檢視</p>
+  </div>
+</div>
+
+<div class="flow-lightbox" id="flowLightbox" role="dialog" aria-modal="true" aria-label="使用者流程圖放大預覽" hidden>
+  <button class="flow-lightbox-close" id="flowLightboxClose" aria-label="關閉">✕</button>
+  <div class="flow-lightbox-stage">
+    <img src="../img/museum-flow.png" alt="史博館 AR 探索體驗 酷獸導引使用者流程圖">
+  </div>
+  <p class="flow-lightbox-hint">滾動或拖曳可查看完整流程圖細節</p>
+</div>
+
+<section class="onsite">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>ON-SITE · NATIONAL MUSEUM OF HISTORY · 2024–2025</span>
+    <h3 class="onsite-title">現場實況<br><em>In the Courtyard.</em></h3>
+    <p class="onsite-desc">以下是史博館戶外庭院的活動現場實拍畫面，以及 AR 探索體驗上線後的實機操作錄影。</p>
+  </div>
+
+  <div class="onsite-photos-row3">
+    <div class="onsite-photo">
+      <img src="../img/museum-onsite/onsite-1-ar-menu.jpg" alt="AR 探索選單 · 庭院雕塑旁實際操作" loading="lazy">
+      <span class="onsite-caption">AR探索選單 · 庭院雕塑旁實際操作</span>
     </div>
+    <div class="onsite-photo">
+      <img src="../img/museum-onsite/onsite-2-app-fish.jpg" alt="國立歷史博物館庭院雕塑旁 AR 探索選單實際操作畫面" loading="lazy">
+      <span class="onsite-caption">網羅互動錦鯉 · 獲得祝福小卡</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/museum-onsite/onsite-4-ar-photo-complete.jpg" alt="國立歷史博物館吉祥物大合照拼貼完成畫面" loading="lazy">
+      <span class="onsite-caption">吉祥物大合照 · 拼貼完成畫面</span>
+    </div>
+    <div class="onsite-photo">
+      <img src="../img/museum-onsite/onsite-5-ar-lantern.jpg" alt="國立歷史博物館開館點燈祈福 AR 天燈施放畫面" loading="lazy">
+      <span class="onsite-caption">開館點燈祈福 · AR 天燈施放</span>
+    </div>
+  </div>
+
+  <div class="onsite-videos">
+    <div class="onsite-video">
+      <video controls preload="none" poster="../video/poster-museum-onsite.jpg" playsinline>
+        <source src="../video/museum-onsite.mp4" type="video/mp4">
+      </video>
+      <span class="onsite-caption">現場花絮 · Event Highlights</span>
+    </div>
+    <div class="onsite-video">
+      <video controls preload="none" poster="../video/poster-museum-mascot-demo.jpg" playsinline>
+        <source src="../video/museum-mascot-demo.mp4" type="video/mp4">
+      </video>
+      <span class="onsite-caption">吉祥物大合照 實機操作錄影</span>
+    </div>
+    <div class="onsite-video">
+      <video controls preload="none" poster="../video/poster-museum-lantern-demo.jpg" playsinline>
+        <source src="../video/museum-light-demo.mp4" type="video/mp4">
+      </video>
+      <span class="onsite-caption">開館點燈祈福 ·繪畫天燈到施放操作</span>
+    </div>
+  </div>
 </section>
 
 <a href="gomaji.html" class="detail-nextlink">
@@ -167,7 +279,7 @@
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
     <div class="footer-info">
       <p class="name">謝孟庭 Helen Hsieh</p>
-      <p>UI/UX Designer &amp; Front-end Developer</p>
+      <p>UI/UX Designer</p>
       <p>台北，台灣 · 開放海外工作機會</p>
     </div>
   </div>
@@ -197,6 +309,49 @@ document.querySelectorAll('a,button').forEach(el => {
 });
 
 // Nav 在案例分頁維持常駐顯示，確保使用者隨時能返回首頁
+
+// ══ 使用者旅程流程圖：放大鏡預覽 ══
+const flowThumb = document.getElementById('flowThumb');
+const flowLens  = document.getElementById('flowLens');
+const LENS_SIZE = 240;
+const LENS_ZOOM = 3;
+flowLens.style.backgroundImage = "url('../img/museum-flow.png')";
+function moveFlowLens(e) {
+  const rect = flowThumb.getBoundingClientRect();
+  let x = e.clientX - rect.left;
+  let y = e.clientY - rect.top;
+  x = Math.max(0, Math.min(x, rect.width));
+  y = Math.max(0, Math.min(y, rect.height));
+  flowLens.style.left = (x - LENS_SIZE / 2) + 'px';
+  flowLens.style.top  = (y - LENS_SIZE / 2) + 'px';
+  flowLens.style.backgroundSize = (rect.width * LENS_ZOOM) + 'px ' + (rect.height * LENS_ZOOM) + 'px';
+  flowLens.style.backgroundPosition = `-${x * LENS_ZOOM - LENS_SIZE / 2}px -${y * LENS_ZOOM - LENS_SIZE / 2}px`;
+}
+document.getElementById('flowTrigger').addEventListener('mousemove', moveFlowLens);
+
+// ══ 使用者旅程流程圖 Lightbox ══
+const flowTrigger      = document.getElementById('flowTrigger');
+const flowLightbox     = document.getElementById('flowLightbox');
+const flowLightboxClose = document.getElementById('flowLightboxClose');
+let flowLastFocused = null;
+
+function openFlowLightbox() {
+  flowLastFocused = document.activeElement;
+  flowLightbox.hidden = false;
+  requestAnimationFrame(() => flowLightbox.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+  flowLightboxClose.focus();
+}
+function closeFlowLightbox() {
+  flowLightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { flowLightbox.hidden = true; }, 300);
+  if (flowLastFocused) flowLastFocused.focus();
+}
+flowTrigger.addEventListener('click', openFlowLightbox);
+flowLightboxClose.addEventListener('click', closeFlowLightbox);
+flowLightbox.addEventListener('click', e => { if (e.target === flowLightbox) closeFlowLightbox(); });
+window.addEventListener('keydown', e => { if (!flowLightbox.hidden && e.key === 'Escape') closeFlowLightbox(); });
 </script>
 </body>
 </html>

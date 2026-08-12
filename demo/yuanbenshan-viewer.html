@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>元本山 玩心大FUN探險趣 · Interactive Demo | Helen Hsieh</title>
+<meta name="description" content="元本山品牌互動探險網頁企劃提案，Helen Hsieh UI/UX 設計作品。">
+<meta property="og:title" content="元本山 玩心大FUN探險趣 · Interactive Demo | Helen Hsieh">
+<meta property="og:description" content="元本山品牌互動探險網頁企劃提案，Helen Hsieh UI/UX 設計作品。">
+<meta property="og:image" content="../img/yuanbenshan-mockup.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+.viewer-wrap{max-width:1100px;margin:0 auto;padding:120px 6vw 100px;}
+.viewer-back{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,237,230,.6);text-decoration:none;margin-bottom:32px;transition:color .3s;}
+.viewer-back:hover{color:var(--gold);}
+.viewer-header{margin-bottom:48px;max-width:640px;}
+.viewer-tag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+.viewer-title{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:400;margin-bottom:16px;}
+.viewer-desc{font-size:14px;line-height:1.85;color:rgba(240,237,230,.6);}
+.viewer-stage{display:flex;justify-content:center;padding:20px 0;}
+.viewer-phone{position:relative;width:390px;max-width:92vw;height:760px;border-radius:44px;background:#000;border:8px solid #1a1a1a;box-shadow:0 40px 80px -20px rgba(0,0,0,.7);overflow:hidden;}
+.viewer-phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:24px;background:#000;border-radius:0 0 16px 16px;z-index:2;}
+.viewer-phone iframe{width:100%;height:100%;border:0;background:#fff;}
+.viewer-note{max-width:640px;margin:40px auto 0;text-align:center;font-size:12px;color:rgba(240,237,230,.4);line-height:1.8;}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="mainNav">
+  <a href="../helen_website.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
+  <ul class="nav-links">
+    <li><a href="../helen_website.html#works">ARCHIVE</a></li>
+    <li><a href="../helen_website.html#about">DOSSIER</a></li>
+    <li><a href="mailto:helenn1219@gmail.com">SIGNAL</a></li>
+  </ul>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">中文版 CV</a>
+      <a href="../cv/Helen-Hsieh-CV-EN.pdf" target="_blank" rel="noopener">English CV</a>
+    </div>
+  </details>
+</nav>
+
+<div class="viewer-wrap">
+  <a href="../helen_website.html#explorations" class="viewer-back">← BACK TO ARCHIVE</a>
+  <div class="viewer-header">
+    <span class="viewer-tag">FRONT-END · LIFF LANDING PAGE · INTERACTIVE DEMO</span>
+    <h1 class="viewer-title">元本山<br>玩心大 FUN 探險趣</h1>
+    <p class="viewer-desc">負責活動網站前端切版，處理電子發票、紙本發票、雲端載具等多種登錄管道的介面與表單驗證邏輯，並實作發票照片上傳即時預覽功能。以下是可實際操作的畫面 Demo，點選按鈕即可體驗真實的頁面切換與互動。</p>
+  </div>
+
+  <div class="viewer-stage">
+    <div class="viewer-phone">
+      <iframe src="yuanbenshan/index.html" title="元本山 玩心大FUN探險趣 互動 Demo"></iframe>
+    </div>
+  </div>
+
+  <p class="viewer-note">Interactive Demo · 表單送出為靜態展示，未串接真實驗證與後端資料庫，僅供操作流程與前端切版能力參考。</p>
+</div>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+</script>
+</body>
+</html>

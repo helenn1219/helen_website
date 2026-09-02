@@ -29,6 +29,13 @@
 .taitra-lightbox-next{right:24px;}
 .taitra-lightbox-caption{position:absolute;left:0;right:0;bottom:24px;text-align:center;font-size:12px;letter-spacing:.06em;color:rgba(240,237,230,.6);}
 @media(max-width:760px){.taitra-lightbox-stage img{width:100%;}}
+.exp-card-wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:40px;}
+.exp-card-wide .exp-card-img{flex:0 0 50%;aspect-ratio:21/9;}
+.exp-card-wide .exp-card-body{flex:0 0 50%;}
+@media(max-width:700px){
+  .exp-card-wide{flex-direction:column;align-items:stretch;}
+  .exp-card-wide .exp-card-img{flex:none;aspect-ratio:3/2;}
+}
 </style>
 </head>
 <body>
@@ -222,7 +229,7 @@
           <h3 class="exp-card-title">外貿協會<br>系列課程網站</h3>
           <p class="exp-card-title-en">TAITRA Course Series</p>
         </div>
-        <p class="exp-card-desc">為外貿協會國際人才培訓中心設計系列 B2B 課程招生網站，以可重複套用的版型系統定期產出多檔課程頁，兼顧 RWD 跨裝置一致性與轉換導向的資訊架構；負責 UI、前端切版與成效埋碼，報名轉換率達 32%。</p>
+        <p class="exp-card-desc">為國際人才培訓中心設計系列課程招生網站，以可重複套用的版型系統定期產出多檔課程頁，兼顧RWD跨裝置一致性；負責 UI、前端切版與成效埋碼，報名轉換率達 32%。</p>
         <details class="exp-card-expand">
           <summary class="exp-card-link">VIEW ALL THREE</summary>
           <ul class="exp-card-sublinks">
@@ -260,6 +267,22 @@
         <p class="exp-card-desc">整合 LINE OA 的客製化優惠券發放系統，負責完整使用者流程設計、UI 設計與前端切版，上線於 LINE LIFF 串接官方 App，支援 6 大實體兌換通路。</p>
       </div>
     </div>
+
+    <!-- 平面設計出口卡 —— 連到 Behance -->
+    <a class="exp-card exp-card-wide reveal" href="https://www.behance.net/helenhsieh" target="_blank" rel="noopener">
+      <div class="exp-card-img">
+        <img src="img/graphic.jpg" alt="平面設計精選 Gomaji 電商促購 Banner 與 EDM 視覺合成" loading="lazy">
+      </div>
+      <div class="exp-card-body">
+        <span class="exp-card-tag">GRAPHIC DESIGN · EDM · AD BANNER</span>
+        <div>
+          <h3 class="exp-card-title">平面設計精選<br>Banner／KV／社群貼文</h3>
+          <p class="exp-card-title-en">Visual &amp; Graphic Design — on Behance</p>
+        </div>
+        <p class="exp-card-desc">累積數十檔電商促購 Banner 與主視覺設計，在維持品牌識別的前提下快速因應不同檔期的行銷訴求。更多平面設計與視覺合成作品收錄於 Behance。</p>
+        <span class="exp-card-link">VIEW ON BEHANCE ↗</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -318,7 +341,7 @@ UI/UX 設計師，
       <div class="cross"><div class="cross-dot"></div></div>
       <span class="footer-label" style="margin-bottom:0;">Signal · Get In Touch</span>
     </div>
-    <h2 class="footer-left h2" style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
+    <h2 class="footer-left h2" style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:16px;">Contact.</h2>
     <div class="footer-info">
       <p class="name">謝孟庭 Helen Hsieh</p>
       <p>UI/UX Designer</p>
@@ -330,6 +353,7 @@ UI/UX 設計師，
       <h4>Contact</h4>
       <a href="mailto:helenn1219@gmail.com">helenn1219@gmail.com</a>
       <a href="https://www.linkedin.com/in/helenhsieh1219" target="_blank">LinkedIn</a>
+      <a href="https://www.behance.net/helenhsieh" target="_blank">Behance</a>
     </div>
     <div class="footer-col">
       <h4>Archive_Metadata</h4>

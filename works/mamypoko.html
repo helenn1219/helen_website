@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嬌聯滿意寶寶 客製化優惠券模組 | Helen Hsieh</title>
+<meta name="description" content="為滿意寶寶設計一套整合 LINE OA 的客製化優惠券模組，讓品牌能彈性管理活動走期、自行上架優惠券，並追蹤消費者兌換行為。">
+<meta property="og:title" content="嬌聯滿意寶寶 客製化優惠券模組 | Helen Hsieh">
+<meta property="og:description" content="為滿意寶寶設計一套整合 LINE OA 的客製化優惠券模組，讓品牌能彈性管理活動走期、自行上架優惠券。">
+<meta property="og:image" content="https://helenn1219.github.io/helen_website/img/mamypoko-2.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#D4B26A; --accent-solid:#A6782E; --accent-wash:rgba(166,120,46,.09); --accent-glow:rgba(166,120,46,.38);}
+
+.process-diagram-wrap{padding:0 var(--page-x) 100px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.process-diagram-frame{background:#FCF6E9;padding:20px;border-radius:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}
+.process-diagram-label{display:block;margin-bottom:14px;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(166,120,46,.6);}
+.process-diagram-trigger{position:relative;display:block;width:100%;}
+.process-diagram-trigger img{width:100%;display:block;}
+.process-lens{position:absolute;width:220px;height:220px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .2s ease;box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 6px rgba(201,168,76,.1);background-repeat:no-repeat;z-index:5;}
+.process-diagram-trigger:hover .process-lens{opacity:1;}
+.process-diagram-hint{margin-top:12px;font-size:10px;letter-spacing:.1em;color:rgba(240,237,230,.4);}
+.process-diagram-frame--full{grid-column:1/-1;max-height:40em;overflow:hidden;}
+.process-diagram-trigger.process-diagram-scroll{overflow:scroll;-webkit-overflow-scrolling:touch;max-height:calc(40em - 80px);}
+.process-diagram-trigger.process-diagram-scroll img{width:-webkit-fill-available;width:-moz-available;width:100%;max-width:none;height:auto;}
+@media(max-width:900px){
+  .process-diagram-wrap{grid-template-columns:1fr;}
+  .process-lens{display:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#works">ARCHIVE</a></li>
+    <li><a href="../index.html#about">DOSSIER</a></li>
+    <li><a href="../index.html#contact">SIGNAL</a></li>
+  </ul>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">中文版 CV</a>
+    </div>
+  </details>
+</nav>
+
+<section class="detail-hero">
+  <img src="../img/mamypoko-2.jpg" alt="嬌聯滿意寶寶客製化優惠券模組 案例主視覺">
+  <div class="detail-hero-overlay"></div>
+  <div class="detail-hero-content">
+    <a href="../index.html#works" class="detail-back">← BACK TO ARCHIVE</a>
+    <span class="detail-tag"><i class="detail-tag-dot"></i>LINE LIFF · COUPON SYSTEM · 2020</span>
+    <h1 class="detail-title">嬌聯滿意寶寶<br>客製化優惠券模組</h1>
+    <p class="detail-title-en">MamyPoko Coupon Module</p>
+  </div>
+</section>
+
+<div class="detail-body">
+  <div class="detail-meta">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Client</div>
+      <div class="detail-meta-value">嬌聯股份有限公司（MamyPoko 滿意寶寶台灣）</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Role</div>
+      <div class="detail-meta-value">UI/UX 設計、前端切版實作、跨職能溝通</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Timeline</div>
+      <div class="detail-meta-value">2020 · 6 個月（前後台同步開發）</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Tools</div>
+      <div class="detail-meta-value">Adobe XD · Illustrator · HTML/CSS · RWD</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Platform</div>
+      <div class="detail-meta-value">LINE LIFF，串接滿意寶寶台灣官方 App</div>
+    </div>
+  </div>
+
+  <div class="detail-main">
+    <p class="detail-lede">為滿意寶寶設計一套整合 LINE OA 的客製化優惠券模組，讓品牌能彈性管理活動走期、自行上架優惠券，並追蹤消費者兌換行為。</p>
+
+    <div class="detail-stats">
+      <div><div class="detail-stat-num">6</div><div class="detail-stat-label">支援兌換通路</div></div>
+      <div><div class="detail-stat-num">3</div><div class="detail-stat-label">步驟完成兌換流程</div></div>
+      <div><div class="detail-stat-num">6個月</div><div class="detail-stat-label">前後台同步開發</div></div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Challenge</h4>
+      <p>滿意寶寶過去的優惠券多透過實體通路發放，無法統一管理票券數量、追蹤兌換狀況，每次活動都得重新開發，成本高、彈性低。這次的目標是設計一套模組化系統：品牌端能自行在後台建立活動、設定走期與兌換通路；消費者端則透過 LINE OA 進入 LIFF 頁面，完成領券、選通路、掃碼兌換的完整流程。主要使用族群是媽媽族群，手機操作習慣落差大，流程必須極度直覺。</p>
+    </div>
+    <div class="detail-section">
+      <h4>Approach</h4>
+      <p>視覺上直接延伸滿意寶寶官網的品牌素材，以金色琥珀呼應品牌質感，讓整體介面像是「從包裝盒延伸出來的數位體驗」，而不是一個獨立的第三方頁面。流程上把整個體驗壓縮成三個主要步驟：填基本資料、選擇折價券、選擇兌換通路，每一步只做一件事，畫面上不特別強調進度，但按鈕文字明確引導下一步。前後台的元件規範（字體系統、色票、按鈕規格）也統一建立，方便另一位負責後台的設計師與後端工程師開發維護時保持邏輯一致。</p>
+    </div>
+    <div class="detail-section">
+      <h4>Outcome</h4>
+      <p>三步驟流程設計有效降低了操作複雜度，統一的設計規範也讓前後台視覺保持一致，跨職能溝通更有效率，品牌端得以自行上架新活動而不必每次重新開發。這個專案也是我在小團隊裡同時身兼設計、切版、跨職能溝通三個角色的代表案例，讓我學到如何在資源有限的條件下做出清晰的設計決策，並精準地把設計意圖傳達給工程師。</p>
+    </div>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>SELECTED SCREENS · COUPON MODULE</span>
+    <h3 class="onsite-title">精選畫面<br><em>From Claim to Redemption.</em></h3>
+    <p class="onsite-desc">從領取折價券、填寫基本資料、選擇兌換通路，到倒數計時掃碼兌換與結果頁，這是消費者實際走過的完整流程畫面。</p>
+  </div>
+</section>
+
+<div class="mockup-marquee">
+  <div class="mockup-track">
+    <div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-1-start.jpg" alt="滿意寶寶優惠券模組 活動起始頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-2-home.jpg" alt="滿意寶寶優惠券模組 活動首頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-3-form.jpg" alt="滿意寶寶優惠券模組 基本資料填寫頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-4-cupon.jpg" alt="滿意寶寶優惠券模組 優惠券內容頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-5-channels.jpg" alt="滿意寶寶優惠券模組 兌換通路選擇頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-6-shopee.jpg" alt="滿意寶寶優惠券模組 蝦皮通路頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-7-redeem.jpg" alt="滿意寶寶優惠券模組 30分鐘倒數掃碼兌換頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-8-success.jpg" alt="滿意寶寶優惠券模組 兌換完成頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-9-expired.jpg" alt="滿意寶寶優惠券模組 兌換已過期頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-1-start.jpg" alt="滿意寶寶優惠券模組 活動起始頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-2-home.jpg" alt="滿意寶寶優惠券模組 活動首頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-3-form.jpg" alt="滿意寶寶優惠券模組 基本資料填寫頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-4-cupon.jpg" alt="滿意寶寶優惠券模組 優惠券內容頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-5-channels.jpg" alt="滿意寶寶優惠券模組 兌換通路選擇頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-6-shopee.jpg" alt="滿意寶寶優惠券模組 蝦皮通路頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-7-redeem.jpg" alt="滿意寶寶優惠券模組 30分鐘倒數掃碼兌換頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-8-success.jpg" alt="滿意寶寶優惠券模組 兌換完成頁"></div><div class="mockup-shot"><img src="../img/mamypoko-mockup/mamypoko-9-expired.jpg" alt="滿意寶寶優惠券模組 兌換已過期頁"></div>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>DESIGN PROCESS · FLOW &amp; BACKEND</span>
+    <h3 class="onsite-title">設計歷程<br><em>Front-End Flow, Back-End Control.</em></h3>
+    <p class="onsite-desc">從完整的使用者流程圖，到品牌方能自行上架活動的後台管理系統，這是模組化設計背後的系統思考。</p>
+  </div>
+</section>
+
+<div class="process-diagram-wrap">
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">USER_FLOW_REF // MAMYPOKO</span>
+    <div class="process-diagram-trigger" id="processTrigger0">
+      <img src="../img/mamypoko-process/mamypoko-flow.jpg" alt="滿意寶寶優惠券模組 完整使用者流程圖" id="processImg0" loading="lazy">
+      <div class="process-lens" id="processLens0"></div>
+    </div>
+    <p class="process-diagram-hint">領券、驗證、倒數、兌換的完整流程與文案節點</p>
+  </div>
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">USER_FLOW_REF // MAMYPOKO</span>
+    <div class="process-diagram-trigger" id="processTrigger1">
+      <img src="../img/mamypoko-process/mamypoko-flow-2.jpg" alt="滿意寶寶優惠券模組 完整使用者流程圖" id="processImg1" loading="lazy">
+      <div class="process-lens" id="processLens1"></div>
+    </div>
+    <p class="process-diagram-hint">領券、驗證、倒數、兌換的完整流程與文案節點</p>
+  </div>
+  <div class="process-diagram-frame process-diagram-frame--full">
+    <span class="process-diagram-label">CMS_REF // MAMYPOKO</span>
+    <div class="process-diagram-trigger process-diagram-scroll" id="processTrigger2">
+      <img src="../img/mamypoko-process/mamypoko-cms.jpg" alt="滿意寶寶優惠券模組 後台活動建立系統" id="processImg2" loading="lazy">
+      <div class="process-lens" id="processLens2"></div>
+    </div>
+    <p class="process-diagram-hint">協同設計的後台：品牌端可自行建立活動、設定頁面內容（畫面較寬，可左右滾動查看完整內容）</p>
+  </div>
+</div>
+
+<a href="puli.html" class="detail-nextlink">
+  <div>
+    <div class="detail-nextlink-label">Next Case</div>
+    <div class="detail-nextlink-title">埔里酒廠 · AI 導覽建置系統</div>
+  </div>
+  <span class="detail-nextlink-arrow">→</span>
+</a>
+
+<footer id="contact">
+  <div class="footer-left">
+    <div class="section-eyebrow" style="margin-bottom:12px;">
+      <div class="cross"><div class="cross-dot"></div></div>
+      <span class="footer-label" style="margin-bottom:0;">Signal · Get In Touch</span>
+    </div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
+    <div class="footer-info">
+      <p class="name">謝孟庭 Helen Hsieh</p>
+      <p>UI/UX Designer</p>
+      <p>台北 台灣 · 開放海外工作機會</p>
+    </div>
+  </div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:helenn1219@gmail.com">helenn1219@gmail.com</a>
+      <a href="https://www.linkedin.com/in/helenhsieh1219" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-col">
+      <h4>Archive_Metadata</h4>
+      <p>© 2026 謝孟庭 Helen Hsieh</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// ══ 設計歷程：放大鏡 ══
+const processData = [
+  {src:'../img/mamypoko-process/mamypoko-flow.jpg', alt:'滿意寶寶優惠券模組 完整使用者流程圖'},
+  {src:'../img/mamypoko-process/mamypoko-flow-2.jpg', alt:'滿意寶寶優惠券模組 完整使用者流程圖'},
+  {src:'../img/mamypoko-process/mamypoko-cms.jpg', alt:'滿意寶寶優惠券模組 後台活動建立系統'}
+];
+const PROCESS_LENS_SIZE = 220;
+const PROCESS_LENS_ZOOM = 3;
+processData.forEach((item, i) => {
+  const trigger = document.getElementById('processTrigger' + i);
+  const lens = document.getElementById('processLens' + i);
+  const img = document.getElementById('processImg' + i);
+  lens.style.backgroundImage = `url('${item.src}')`;
+  trigger.addEventListener('mousemove', e => {
+    const rect = img.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+    x = Math.max(0, Math.min(x, rect.width));
+    y = Math.max(0, Math.min(y, rect.height));
+    lens.style.left = (x - PROCESS_LENS_SIZE / 2) + 'px';
+    lens.style.top  = (y - PROCESS_LENS_SIZE / 2) + 'px';
+    lens.style.backgroundSize = (rect.width * PROCESS_LENS_ZOOM) + 'px ' + (rect.height * PROCESS_LENS_ZOOM) + 'px';
+    lens.style.backgroundPosition = `-${x * PROCESS_LENS_ZOOM - PROCESS_LENS_SIZE / 2}px -${y * PROCESS_LENS_ZOOM - PROCESS_LENS_SIZE / 2}px`;
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>親親影城 品牌重塑與官網體驗設計 | Helen Hsieh</title>
+<meta name="description" content="為北屯社區型老字號影城「親親影城」重新設計品牌識別與官網體驗，把「櫃檯反覆確認」的購票流程，變成線上就能完成的自助服務。">
+<meta property="og:title" content="親親影城 品牌重塑與官網體驗設計 | Helen Hsieh">
+<meta property="og:description" content="為北屯社區型老字號影城「親親影城」重新設計品牌識別與官網體驗。">
+<meta property="og:image" content="https://helenn1219.github.io/helen_website/img/chinchin-mockup/chinchin-hero.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@100;200;300;400;500;600&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#FC951B; --accent-solid:#2A579B; --accent-wash:rgba(252,149,27,.09); --accent-glow:rgba(252,149,27,.38);}
+
+.process-diagram-wrap{padding:0 var(--page-x) 100px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.process-diagram-frame{background:#F4EFE4;padding:20px;border-radius:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);}
+.process-diagram-label{display:block;margin-bottom:14px;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(42,87,155,.7);}
+.process-diagram-trigger{position:relative;display:block;width:100%;}
+.process-diagram-trigger img{width:100%;display:block;}
+.process-lens{position:absolute;width:220px;height:220px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .2s ease;box-shadow:0 10px 30px rgba(0,0,0,.25),0 0 0 6px rgba(201,168,76,.1);background-repeat:no-repeat;z-index:5;}
+.process-diagram-trigger:hover .process-lens{opacity:1;}
+.process-diagram-hint{margin-top:12px;font-size:10px;letter-spacing:.1em;color:rgba(240,237,230,.4);}
+@media(max-width:900px){
+  .process-diagram-wrap{grid-template-columns:1fr;}
+  .process-lens{display:none;}
+}
+
+.decision-block{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:28px 0;border-top:1px solid var(--border-dim);}
+.decision-block:first-of-type{border-top:none;padding-top:4px;}
+.decision-index{font-family:var(--serif);font-size:26px;color:var(--accent,var(--gold));opacity:.55;line-height:1;}
+.decision-title{font-size:16px;font-weight:500;color:var(--text);margin-bottom:14px;line-height:1.5;max-width:min(100%,38rem);}
+.decision-block p.decision-line{font-size:14px;line-height:1.85;color:rgba(240,237,230,.68);margin-bottom:10px;max-width:min(100%,38rem);}
+.decision-block p.decision-line b{color:var(--accent,var(--gold));font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:10px;margin-right:8px;}
+
+.swatch-row{display:flex;gap:18px;flex-wrap:wrap;margin:20px 0 4px;}
+.swatch-row--compact{gap:14px;}
+.swatch-chip{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;line-height:1.6;color:rgba(240,237,230,.6);text-align:center;letter-spacing:.02em;}
+.swatch-chip .swatch-color{display:block;width:44px;height:44px;border-radius:50%;border:1px solid rgba(240,237,230,.15);}
+
+.reflection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;}
+.reflection-card{background:var(--bg-mid);border:1px solid var(--border-dim);padding:24px;}
+.reflection-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent,var(--gold));margin-bottom:12px;}
+.reflection-card p{font-size:13px;line-height:1.8;color:rgba(240,237,230,.65);}
+@media(max-width:760px){.reflection-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo"><img src="../img/logo.svg" alt="Helen Hsieh"></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#works">ARCHIVE</a></li>
+    <li><a href="../index.html#about">DOSSIER</a></li>
+    <li><a href="../index.html#contact">SIGNAL</a></li>
+  </ul>
+  <details class="nav-cv-dropdown">
+    <summary class="nav-cv">Download CV ▾</summary>
+    <div class="nav-cv-menu">
+      <a href="../cv/Helen-Hsieh-CV.pdf" target="_blank" rel="noopener">中文版 CV</a>
+    </div>
+  </details>
+</nav>
+
+<section class="detail-hero">
+  <img src="../img/chinchin-mockup/chinchin-hero.jpg" alt="親親影城 品牌重塑與官網體驗設計 案例主視覺">
+  <div class="detail-hero-overlay"></div>
+  <div class="detail-hero-content">
+    <a href="../index.html#explorations" class="detail-back">← BACK TO ARCHIVE</a>
+    <span class="detail-tag"><i class="detail-tag-dot"></i>SIDE PROJECT · BRAND &amp; UX REDESIGN · 2026</span>
+    <h1 class="detail-title">親親影城<br>品牌重塑與官網體驗設計</h1>
+    <p class="detail-title-en">Chin Chin Cinema Rebrand &amp; UX Redesign</p>
+    <a href="https://helenn1219.github.io/chinchincinema/" target="_blank" rel="noopener" class="detail-live-btn">VIEW LIVE DEMO ↗</a>
+  </div>
+</section>
+
+<div class="detail-body">
+  <div class="detail-meta">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Type</div>
+      <div class="detail-meta-value">Side Project</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Team</div>
+      <div class="detail-meta-value">5 人協作（謝孟庭、陳怡安、黃亭瑜、童靖雯、洪郁恩）</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Role</div>
+      <div class="detail-meta-value">PM &amp; UI/UX Design（研究、人物誌、品牌重塑、線框圖）</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Timeline</div>
+      <div class="detail-meta-value">2026.07 – 2026.08 · 4 週</div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Tools</div>
+      <div class="detail-meta-value">Figma · Canva · User Research · Persona</div>
+    </div>
+  </div>
+
+  <div class="detail-main">
+    <p class="detail-lede">為北屯社區型老字號影城「親親影城」重新設計品牌識別與官網體驗，把「櫃檯反覆確認」的購票流程，變成線上就能完成的自助服務。</p>
+
+    <div class="detail-stats">
+      <div><div class="detail-stat-num">5</div><div class="detail-stat-label">人協作團隊</div></div>
+      <div><div class="detail-stat-num">4週</div><div class="detail-stat-label">完成研究到上線</div></div>
+      <div><div class="detail-stat-num">2組</div><div class="detail-stat-label">人物誌驗證需求</div></div>
+      <div><div class="detail-stat-num">1套</div><div class="detail-stat-label">全新品牌識別</div></div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Challenge</h4>
+      <p>親親影城官網介面操作不夠直覺、無法線上購票、場次資訊沒有即時更新，會員制度也不透明。我們訪談兩位典型客群——北屯在地媽媽與高中生影迷社社長，發現兩人的痛點高度重疊：光是要確認場次與優惠就得反覆跑櫃檯，也無法提前掌握場次異動。</p>
+    </div>
+  </div>
+</div>
+
+<div class="detail-gallery">
+  <img src="../img/chinchin-mockup/chinchin-oldsite.jpg" alt="親親影城改版前官網介面與網站現況五大痛點分析" loading="lazy">
+</div>
+
+<div class="detail-body">
+  <div class="detail-main" style="margin-left:auto;max-width:100%;">
+    <div class="detail-section">
+      <h4>Design Decisions</h4>
+
+      <div class="decision-block">
+        <div class="decision-index">01</div>
+        <div>
+          <h5 class="decision-title">以「效率化」而非「炫技」定調需求優先序</h5>
+          <p class="decision-line"><b>Problem</b>五項痛點（購票效率、會員資料、資訊更新、自由選位、場次選擇）該先解決哪個？</p>
+          <p class="decision-line"><b>Decision</b>兩組人物誌的最高共同痛點都是「櫃檯來回確認耗時」，我們把「線上購票＋自助選位」訂為第一優先，其餘需求依此展開資訊架構。</p>
+        </div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-index">02</div>
+        <div>
+          <h5 class="decision-title">品牌重塑——從「連鎖感」拉回「社區感」</h5>
+          <p class="decision-line"><b>Problem</b>舊官網視覺凌亂、缺乏一致品牌識別，跟「社區型、價位親民」的品牌定位不符。</p>
+          <p class="decision-line"><b>Decision</b>以親密關係為概念重新設計 LOGO（取 CHINCHIN 字首 C 發想），並設計「啾咪家族」吉祥物角色，色彩系統選用柔黃、亮橙、湛藍、清綠，對應溫暖、熱情、專業、輕鬆四種品牌情緒關鍵字。</p>
+          <div class="swatch-row swatch-row--compact">
+            <div class="swatch-chip"><span class="swatch-color" style="background:#FFD75A;"></span>柔黃<br>#FFD75A</div>
+            <div class="swatch-chip"><span class="swatch-color" style="background:#FC951B;"></span>亮橙<br>#FC951B</div>
+            <div class="swatch-chip"><span class="swatch-color" style="background:#2A579B;"></span>湛藍<br>#2A579B</div>
+            <div class="swatch-chip"><span class="swatch-color" style="background:#83D6B5;"></span>清綠<br>#83D6B5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="decision-block">
+        <div class="decision-index">03</div>
+        <div>
+          <h5 class="decision-title">功能地圖先行，把「用戶端」與「懸浮快捷按鈕」分開規劃</h5>
+          <p class="decision-line"><b>Problem</b>購票、會員、場次查詢等功能項目多，怎麼避免使用者在主選單迷路？</p>
+          <p class="decision-line"><b>Decision</b>規劃首頁＋8 大主分類的資訊架構，額外設計常駐懸浮按鈕（快速購票／社群連結／回頂部），降低核心動作（購票）的操作摩擦力。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Outcome</h4>
+      <p>4 週內完成從研究、人物誌、品牌重塑到線框圖與視覺化設計，並交由團隊完成前端切版與 RWD 製作上線。專案結論聚焦三個效益：網站定位為「品牌形象網站」而不只是購票工具、改善介面提升使用體驗、會員資料線上整合以強化長期經營。</p>
+    </div>
+
+    <div class="detail-section">
+      <h4>Reflection</h4>
+      <div class="reflection-grid">
+        <div class="reflection-card">
+          <div class="reflection-label">做對的事</div>
+          <p>兩組人物誌訪談的痛點高度收斂，讓需求優先序很快有共識，沒有在企劃階段卡關。</p>
+        </div>
+        <div class="reflection-card">
+          <div class="reflection-label">下次改進</div>
+          <p>品牌識別（LOGO、吉祥物）定案時間偏晚，壓縮了視覺化與切版的作業週期，下次會提早鎖定風格方向。</p>
+        </div>
+        <div class="reflection-card">
+          <div class="reflection-label">最大收穫</div>
+          <p>第一次以 PM 身份協調 5 人小組的企劃、設計、程式三種角色分工，學到怎麼把研究產出轉譯成不同職能都看得懂的規格文件。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>SELECTED SCREENS · WIREFRAME &amp; UX FLOW</span>
+    <h3 class="onsite-title">精選畫面<br><em>From Research to Wireframe.</em></h3>
+    <p class="onsite-desc">從首頁、線上購票、選位選票到會員中心，這是規劃階段產出的線框圖，用來驗證資訊架構與操作流程。</p>
+  </div>
+</section>
+
+<div class="mockup-marquee">
+  <div class="mockup-track">
+    <div class="mockup-shot"><img src="../img/chinchin-mockup/wf-home.jpg" alt="親親影城 首頁線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-movies.jpg" alt="親親影城 電影介紹線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-schedule.jpg" alt="親親影城 場次查詢線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-tickets.jpg" alt="親親影城 選擇票種線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-seats.jpg" alt="親親影城 選擇座位線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-confirm.jpg" alt="親親影城 確認訂單明細線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-member.jpg" alt="親親影城 會員中心線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-home.jpg" alt="親親影城 首頁線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-movies.jpg" alt="親親影城 電影介紹線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-schedule.jpg" alt="親親影城 場次查詢線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-tickets.jpg" alt="親親影城 選擇票種線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-seats.jpg" alt="親親影城 選擇座位線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-confirm.jpg" alt="親親影城 確認訂單明細線框圖"></div><div class="mockup-shot"><img src="../img/chinchin-mockup/wf-member.jpg" alt="親親影城 會員中心線框圖"></div>
+  </div>
+</div>
+
+<section class="showcase">
+  <div class="onsite-header">
+    <span class="detail-tag"><i class="detail-tag-dot"></i>DESIGN PROCESS · MAP &amp; BRAND SYSTEM</span>
+    <h3 class="onsite-title">設計歷程<br><em>Mapping the Structure.</em></h3>
+    <p class="onsite-desc">從完整的前台功能地圖，到品牌重塑後的介面拼貼總覽，這是把研究洞察轉譯成可執行規格的過程。</p>
+  </div>
+</section>
+
+<div class="process-diagram-wrap">
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">FUNCTIONAL_MAP_REF // CHIN CHIN CINEMA</span>
+    <div class="process-diagram-trigger" id="processTrigger0">
+      <img src="../img/chinchin-mockup/chinchin-sitemap.jpg" alt="親親影城 前台功能架構圖" id="processImg0" loading="lazy">
+      <div class="process-lens" id="processLens0"></div>
+    </div>
+    <p class="process-diagram-hint">首頁＋8 大主分類的完整功能地圖</p>
+  </div>
+  <div class="process-diagram-frame">
+    <span class="process-diagram-label">REDESIGN_REF // CHIN CHIN CINEMA</span>
+    <div class="process-diagram-trigger" id="processTrigger1">
+      <img src="../img/chinchin-mockup/chinchin-collage.jpg" alt="親親影城 改版後介面拼貼總覽" id="processImg1" loading="lazy">
+      <div class="process-lens" id="processLens1"></div>
+    </div>
+    <p class="process-diagram-hint">改版後多螢幕介面總覽，由團隊完成視覺化與前端切版</p>
+  </div>
+</div>
+
+<a href="puli.html" class="detail-nextlink">
+  <div>
+    <div class="detail-nextlink-label">Next Case</div>
+    <div class="detail-nextlink-title">埔里酒廠 · AI 導覽建置系統</div>
+  </div>
+  <span class="detail-nextlink-arrow">→</span>
+</a>
+
+<footer id="contact">
+  <div class="footer-left">
+    <div class="section-eyebrow" style="margin-bottom:12px;">
+      <div class="cross"><div class="cross-dot"></div></div>
+      <span class="footer-label" style="margin-bottom:0;">Signal · Get In Touch</span>
+    </div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3vw,44px);font-weight:400;margin-bottom:28px;">Contact.</h2>
+    <div class="footer-info">
+      <p class="name">謝孟庭 Helen Hsieh</p>
+      <p>UI/UX Designer</p>
+      <p>台北 台灣 · 開放海外工作機會</p>
+    </div>
+  </div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:helenn1219@gmail.com">helenn1219@gmail.com</a>
+      <a href="https://www.linkedin.com/in/helenhsieh1219" target="_blank">LinkedIn</a>
+      <a href="https://www.behance.net/helenhsieh" target="_blank">Behance</a>
+    </div>
+    <div class="footer-col">
+      <h4>Archive_Metadata</h4>
+      <p>© 2026 謝孟庭 Helen Hsieh</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// ══ 設計歷程：放大鏡 ══
+const processData = [
+  {src:'../img/chinchin-mockup/chinchin-sitemap.jpg', alt:'親親影城 前台功能架構圖'},
+  {src:'../img/chinchin-mockup/chinchin-collage.jpg', alt:'親親影城 改版後介面拼貼總覽'}
+];
+const PROCESS_LENS_SIZE = 220;
+const PROCESS_LENS_ZOOM = 3;
+processData.forEach((item, i) => {
+  const trigger = document.getElementById('processTrigger' + i);
+  const lens = document.getElementById('processLens' + i);
+  const img = document.getElementById('processImg' + i);
+  lens.style.backgroundImage = `url('${item.src}')`;
+  trigger.addEventListener('mousemove', e => {
+    const rect = img.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+    x = Math.max(0, Math.min(x, rect.width));
+    y = Math.max(0, Math.min(y, rect.height));
+    lens.style.left = (x - PROCESS_LENS_SIZE / 2) + 'px';
+    lens.style.top  = (y - PROCESS_LENS_SIZE / 2) + 'px';
+    lens.style.backgroundSize = (rect.width * PROCESS_LENS_ZOOM) + 'px ' + (rect.height * PROCESS_LENS_ZOOM) + 'px';
+    lens.style.backgroundPosition = `-${x * PROCESS_LENS_ZOOM - PROCESS_LENS_SIZE / 2}px -${y * PROCESS_LENS_ZOOM - PROCESS_LENS_SIZE / 2}px`;
+  });
+});
+</script>
+</body>
+</html>
